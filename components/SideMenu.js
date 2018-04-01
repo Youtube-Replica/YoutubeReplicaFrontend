@@ -1,0 +1,68 @@
+import React, { Component } from 'react';
+import Menu from 'material-ui/Menu';
+import Divider from 'material-ui/Divider';
+import MenuItem from 'material-ui/MenuItem';
+import Paper from 'material-ui/Paper';
+import Avatar from 'material-ui/Avatar';
+import { List, ListItem } from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+
+import ActionHome from 'material-ui/svg-icons/action/home';
+import ActionTrendingUp from 'material-ui/svg-icons/action/trending-up';
+import AVSubscriptions from 'material-ui/svg-icons/av/subscriptions';
+import AVPlaylistPlay from 'material-ui/svg-icons/av/playlist-play';
+import ActionHistory from 'material-ui/svg-icons/action/history';
+import ActionthumbUp from 'material-ui/svg-icons/action/thumb-up';
+
+// to generate fake data
+let faker = require('faker')
+
+export default class SideMenu extends Component {
+
+    render() {
+
+        let subs = []
+
+        for (let i = 0; i < 10; i++) {
+
+            subs.push(
+                <ListItem
+                    id={i}
+                    style={{ fontSize: 15, }}
+                    primaryText={faker.internet.userName()}
+                    leftAvatar={<Avatar src={faker.image.avatar()} />}
+                />
+            )
+        }
+
+        return (
+            <div>
+                <Paper style={{
+                    display: 'inline-block',
+                    float: 'left',
+                    margin: '16px 32px 16px 0',
+                }}>
+                    <Menu>
+                        <MenuItem primaryText="Home" leftIcon={<ActionHome />} />
+                        <MenuItem primaryText="Trending" leftIcon={<ActionTrendingUp />} />
+                        <MenuItem primaryText="Subscriptions" leftIcon={<AVSubscriptions />} />
+
+                        <Divider />
+
+                        <MenuItem primaryText="History" leftIcon={<ActionHistory />} />
+                        <MenuItem primaryText="Playlists" leftIcon={<AVPlaylistPlay />} />
+                        <MenuItem primaryText="Liked videos" leftIcon={<ActionthumbUp />} />
+
+                        <Divider />
+
+                        <List>
+                            <Subheader>Subscriptions</Subheader>
+                            {subs}
+                        </List>
+
+                    </Menu>
+                </Paper>
+            </div>
+        )
+    }
+};
