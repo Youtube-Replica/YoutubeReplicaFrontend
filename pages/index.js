@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Bar from '../components/Bar';
 import SideMenu from '../components/SideMenu';
+import VideoGrid from '../components/VideoGrid'
 
 export default class Homepage extends Component {
 
@@ -22,6 +23,7 @@ export default class Homepage extends Component {
 
                     <Bar />
                     <SideMenu />
+                    <VideoGrid />
 
                 </div>
             </MuiThemeProvider>

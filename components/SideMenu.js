@@ -27,7 +27,7 @@ export default class SideMenu extends Component {
 
             subs.push(
                 <ListItem
-                    id={i}
+                    key={i}
                     style={{ fontSize: 15, }}
                     primaryText={faker.internet.userName()}
                     leftAvatar={<Avatar src={faker.image.avatar()} />}
