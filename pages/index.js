@@ -6,27 +6,27 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Bar from '../components/Bar';
 import SideMenu from '../components/SideMenu';
 import VideoGrid from '../components/VideoGrid'
+import { Channel } from "./channel";
 
-export default class Homepage extends Component {
+import { BrowserRouter } from 'react-router-dom';
+import { matchRoutes, renderRoutes } from 'react-router-config';
 
-    render() {
-        return (
-            <MuiThemeProvider>
+import "../style.css"
+import Wrapper from '../components/Wrapper';
 
-                <div>
 
-                    <Head>
-                        <title>YouTube</title>
-                        <link rel="icon" href="../static/favicon.svg" />
-                        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                    </Head>
 
-                    <Bar />
-                    <SideMenu />
-                    <VideoGrid />
 
-                </div>
-            </MuiThemeProvider>
-        )
-    }
-};
+
+
+
+
+const Home = (props) => (
+    <Wrapper>
+        <VideoGrid />
+    </Wrapper>
+
+);
+
+
+export default Home;
