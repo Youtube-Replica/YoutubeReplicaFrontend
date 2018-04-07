@@ -19,6 +19,11 @@ let faker = require('faker')
 
 export default class SideMenu extends Component {
 
+    handleClick(e) {
+        e.preventDefault();
+        window.location.replace(`/channel/${e.target.innerText}`)
+    }
+
     render() {
 
         let subs = []
@@ -30,7 +35,9 @@ export default class SideMenu extends Component {
                     key={i}
                     style={{ fontSize: 15, }}
                     primaryText={faker.internet.userName()}
-                    leftAvatar={<Avatar src={faker.image.avatar()} />}
+                    onClick={this.handleClick}
+                    leftAvatar={<Avatar src={faker.image.avatar()}
+                    />}
                 />
             )
         }
