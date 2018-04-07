@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes            from 'prop-types';
-import $                    from 'jquery';
 import moment               from 'moment';
 import List                 from 'material-ui/List/List';
 import Message              from './Message';
@@ -51,7 +50,9 @@ export default class Messages extends Component {
 
     sanitizeMessages(data) {
         var orderedMessages = []
-        $.each(data.messages, function(_index, message) {
+        var messages = data.messages
+        for (var i = messages.length - 1; i >= 0; i--) {
+            var message = messages[i]
             if (
                     message.sent_at &&
                     message.sender_id &&
@@ -60,8 +61,7 @@ export default class Messages extends Component {
                ) {
               orderedMessages.push(message)
             }
-        });
-
+        }
         orderedMessages.sort(function(a, b) {
             return (a.sent_at < b.sent_at) ? -1 : ((a.sent_at > b.sent_at) ? 1 : 0)
         })
@@ -85,6 +85,7 @@ export default class Messages extends Component {
               sentAt                = {moment(message.sent_at).fromNow()} />
           )
         }
+
         return (
           <div>
             <List style={styles.root}>
