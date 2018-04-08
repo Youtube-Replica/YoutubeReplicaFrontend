@@ -11,7 +11,6 @@ import { Channel } from "./channel";
 import { BrowserRouter } from 'react-router-dom';
 import { matchRoutes, renderRoutes } from 'react-router-config';
 
-import "../style.css"
 import Wrapper from '../components/Wrapper';
 
 
