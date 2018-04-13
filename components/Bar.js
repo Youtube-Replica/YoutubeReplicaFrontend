@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
+import Router from 'next/router';
+
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
@@ -8,10 +10,42 @@ import ActionSearch from 'material-ui/svg-icons/action/search';
 import FileUpload from 'material-ui/svg-icons/file/file-upload';
 import SocialNotifications from 'material-ui/svg-icons/social/notifications';
 import ActionAccountCircle from 'material-ui/svg-icons/action/account-circle';
+import MenuItem from 'material-ui/MenuItem';
+import Menu from 'material-ui/Menu';
+import Popover from 'material-ui/Popover';
 
 export default class Bar extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            open: false,
+        };
+    }
+
+    handleClick = (event) => {
+        // This prevents ghost click.
+        event.preventDefault();
+
+        this.setState({
+            open: true,
+            anchorEl: event.currentTarget,
+        });
+    };
+
+    handleRequestClose = () => {
+        this.setState({
+            open: false,
+        });
+    };
+
+    directToSettings = () => {
+        Router.push('/settings');
+    }
+
     render() {
+
         return (
             <div>
 
@@ -50,7 +84,21 @@ export default class Bar extends Component {
                         </IconButton>
 
                         <IconButton iconStyle={{ color: 'white' }}>
-                            <ActionAccountCircle />
+                            <ActionAccountCircle onClick={this.handleClick} />
+                            <Popover
+                                open={this.state.open}
+                                anchorEl={this.state.anchorEl}
+                                anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+                                targetOrigin={{ horizontal: 'left', vertical: 'top' }}
+                                onRequestClose={this.handleRequestClose}
+                            >
+                                <Menu>
+                                    <MenuItem primaryText="Refresh" />
+                                    <MenuItem primaryText="Help &amp; feedback" />
+                                    <MenuItem primaryText="Settings" onClick={this.directToSettings} />
+                                    <MenuItem primaryText="Sign out" />
+                                </Menu>
+                            </Popover>
                         </IconButton>
 
                     </ToolbarGroup>
