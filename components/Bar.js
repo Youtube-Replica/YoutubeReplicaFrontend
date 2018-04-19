@@ -93,8 +93,7 @@ export default class Bar extends Component {
                                 onRequestClose={this.handleRequestClose}
                             >
                                 <Menu>
-                                    <MenuItem primaryText="Refresh" />
-                                    <MenuItem primaryText="Help &amp; feedback" />
+                                    <MenuItem primaryText="My Channel" />
                                     <MenuItem primaryText="Settings" onClick={this.directToSettings} />
                                     <MenuItem primaryText="Sign out" />
                                 </Menu>

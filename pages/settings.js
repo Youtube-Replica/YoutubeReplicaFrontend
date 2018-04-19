@@ -9,17 +9,42 @@ import Link from 'next/link'
 import Head from 'next/head'
 import OptionsWrapper from '../components/OptionsWrapper';
 import { Divider } from 'material-ui';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import RaisedButton from 'material-ui/RaisedButton';
 
 // to generate fake data
 let faker = require('faker')
 
 export default class SettingsPage extends Component {
+    state = {
+        shown: false
+    }
+
+    toggleAdvanceSettings = event => {
+        console.log("Toggled")
+        event.preventDefault();
+        this.setState({
+            shown: !this.state.shown
+        })
+    }
+
     render() {
+        let AdvancedSettings = () => {
+            if (this.state.shown) {
+                console.log("Shown");
+                return (
+                    <div>
+                        <p>Youtube ID :{faker.random.uuid()}</p>
+                        <p>Channel ID :{faker.random.uuid()}</p>
+                        <RaisedButton label="Delete Channel" secondary={true} />
+                    </div>
+                );
+            } else {
+                console.log("Not shown");
+                return null;
+            }
+        }
         return (
-            <MuiThemeProvider className="mainComponent">
-                < OptionsWrapper >
-                </OptionsWrapper >
+            <OptionsWrapper>
                 <div className="settings-card">
                     <Card>
                         <CardHeader
@@ -33,9 +58,9 @@ export default class SettingsPage extends Component {
                         <div className="user-info">
                             <h5>Name</h5>
                             <div className="user-info">
-                                <Avatar className="avatar-icon" size={80} src={faker.image.image()} style={{ borderRadius: 0 }} />
+                                <Avatar className="avatar-icon" size={80} src={faker.image.image()} style={{ borderRadius: 0, marginLeft: '30px' }} />
                                 <label>
-                                    <p>{faker.name.findName()}</p>
+                                    <p style={{ marginLeft: '30px' }}>{faker.name.findName()}</p>
                                 </label>
                             </div>
                         </div>
@@ -49,32 +74,27 @@ export default class SettingsPage extends Component {
                         <div className="user-info">
                             <h5>Account Settings</h5>
                             <div style={{ marginLeft: "8.5em", marginTop: "1em" }}>
-                                <a href="#">
+                                <a href="" onClick={this.toggleAdvanceSettings}>
                                     View or change your account settings
                                 </a>
+                                <AdvancedSettings />
                             </div>
                         </div>
                     </Card>
                 </div>
-                <style JSX>{`
+                <style jsx>{`
                     .settings-card {
                         padding: 16px;
                     
                     }
 
-                    .avatar-icon {
-                        margin-left: 5em;
-                        margin-right: 10px;
-                        vertical-align:middle;
-                    }
-
                     .user-info {
-                        align-align: center;
+                        margin-left: 1em;
                         display: flex;
                         flex-wrap: no-wrap;
                     }
                 `}</style>
-            </MuiThemeProvider >
+            </OptionsWrapper >
 
         )
     }

@@ -32,12 +32,11 @@ export default class SideMenu extends Component {
                     margin: '16px 32px 16px 0',
                 }}>
                     <Menu>
-                        <MenuItem primaryText="OverView" leftIcon={<ActionHome />} />
-                        <MenuItem primaryText="Connected Accounts" leftIcon={<ActionTrendingUp />} />
-                        <MenuItem primaryText="Privacy" leftIcon={<AVSubscriptions />} />
-                        <MenuItem primaryText="Notifications" leftIcon={<ActionHistory />} />
-                        <MenuItem primaryText="Playback" leftIcon={<AVPlaylistPlay />} />
-                        <MenuItem primaryText="Connected TVs" leftIcon={<ActionthumbUp />} />
+                        <br />
+                        <MenuItem primaryText="Overview" />
+                        <MenuItem primaryText="Privacy" />
+                        <MenuItem primaryText="Notifications" />
+                        <MenuItem primaryText="Playback" />
                     </Menu>
                 </Paper>
             </div>
