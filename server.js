@@ -21,6 +21,11 @@ app.prepare()
             app.render(req, res, actualPage, null)
         })
 
+        server.get('/settings', (req, res) => {
+            const actualPage = '/settings'
+            app.render(req, res, actualPage, null)
+        })
+
         server.get('*', (req, res) => {
             app.render(req, res, '/404', null)
         })
