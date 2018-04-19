@@ -21,6 +21,11 @@ app.prepare()
             app.render(req, res, actualPage, null)
         })
 
+        server.get('/search', (req, res) => {
+            const actualPage = '/App'
+            app.render(req, res, actualPage, null)
+        })
+
         server.get('*', (req, res) => {
             app.render(req, res, '/404', null)
         })
