@@ -23,8 +23,9 @@ app.prepare()
 
         server.get('/search', (req, res) => {
             const actualPage = '/App'
+            app.render(req, res, actualPage, null)
           })
-          
+
         server.get('/settings', (req, res) => {
             const actualPage = '/settings'
             app.render(req, res, actualPage, null)
