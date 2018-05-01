@@ -1,20 +1,19 @@
-import Link from 'next/link'
-import Head from 'next/head'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import React, { Component, Fragment } from 'react';
 import Bar from "./Bar";
 import SideMenu from "./SideMenu";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Link } from "react-router-dom";
 
 const Wrapper = (props) => (
 
     <MuiThemeProvider>
 
         <Fragment>
-            <Head>
+            <div>
                 <title>YouTube</title>
                 <link rel="icon" href="../static/favicon.svg" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            </Head>
+            </div>
 
             <Bar />
             <SideMenu />

@@ -1,5 +1,3 @@
-import Link from 'next/link'
-import Head from 'next/head'
 import Wrapper from '../components/Wrapper';
 
 import React, { Component, Fragment } from 'react';
