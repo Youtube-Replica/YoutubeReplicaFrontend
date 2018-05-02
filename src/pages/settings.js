@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-import List from 'material-ui/List/List';
-import ListItem from 'material-ui/List/ListItem';
+import { Card, CardHeader } from 'material-ui/Card';
 import Avatar from 'material-ui/Avatar';
 import { Divider } from 'material-ui';
 import RaisedButton from 'material-ui/RaisedButton';

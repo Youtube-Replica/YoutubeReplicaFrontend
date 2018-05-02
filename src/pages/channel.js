@@ -1,17 +1,14 @@
 import Wrapper from '../components/Wrapper';
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import VideoGrid from '../components/VideoGrid'
-import { Divider } from 'material-ui';
 import '../style.css'
 
 let faker = require('faker')
 
 
 class Channel extends Component {
-    constructor(props) {
-        super(props);
-    }
+
     componentWillMount = () => {
         this.setState({
             chosenTab: 'Videos'
@@ -47,9 +44,6 @@ class Channel extends Component {
 
 
 class ChannelHeader extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     handleClick = (e) => {
         let subscribed = !this.state.subscribed;

@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-import Home from './pages/'
-import Settings from './pages/settings'
-import Channel from './pages/channel'
+import AppRouter from './router'
+import Wrapper from './components/Wrapper'
 
 export default class App extends Component {
     render() {
         return (
 
-            <Router>
+            <Wrapper>
+                <AppRouter />
+            </Wrapper>
 
-                <div>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/channel" component={Channel} />
-                    <Route path="/settings" component={Settings} />
-                </div>
-
-            </Router>
         )
     }
 };

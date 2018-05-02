@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 let faker = require('faker')
 
 export default class VideoGrid extends Component {

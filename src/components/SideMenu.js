@@ -21,7 +21,7 @@ export default class SideMenu extends Component {
 
     handleClick(e) {
         e.preventDefault();
-        window.location.replace(`/channel/${e.target.innerText}`)
+        // window.location.replace(`/channel/${e.target.innerText}`)
     }
 
     render() {
@@ -30,11 +30,14 @@ export default class SideMenu extends Component {
 
         for (let i = 0; i < 10; i++) {
 
+            let username = faker.internet.userName()
+
             subs.push(
+
                 <ListItem
                     key={i}
                     style={{ fontSize: 15, }}
-                    primaryText={faker.internet.userName()}
+                    primaryText={username}
                     onClick={this.handleClick}
                     leftAvatar={<Avatar src={faker.image.avatar()}
                     />}
