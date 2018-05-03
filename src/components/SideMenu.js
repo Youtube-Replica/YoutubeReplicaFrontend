@@ -5,6 +5,7 @@ import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
 import Avatar from 'material-ui/Avatar';
 import { List, ListItem } from 'material-ui/List';
+import FlatButton from 'material-ui/FlatButton';
 import Subheader from 'material-ui/Subheader';
 
 import ActionHome from 'material-ui/svg-icons/action/home';
@@ -14,15 +15,12 @@ import AVPlaylistPlay from 'material-ui/svg-icons/av/playlist-play';
 import ActionHistory from 'material-ui/svg-icons/action/history';
 import ActionthumbUp from 'material-ui/svg-icons/action/thumb-up';
 
+import { Link } from 'react-router-dom'
+
 // to generate fake data
 let faker = require('faker')
 
 export default class SideMenu extends Component {
-
-    handleClick(e) {
-        e.preventDefault();
-        window.location.replace(`/channel/${e.target.innerText}`)
-    }
 
     render() {
 
@@ -30,12 +28,15 @@ export default class SideMenu extends Component {
 
         for (let i = 0; i < 10; i++) {
 
+            let username = faker.internet.userName()
+
             subs.push(
-                <ListItem
-                    key={i}
+
+                < ListItem
                     style={{ fontSize: 15, }}
-                    primaryText={faker.internet.userName()}
-                    onClick={this.handleClick}
+                    key={i}
+                    containerElement={<Link to={"/channel/" + username} />}
+                    primaryText={username}
                     leftAvatar={<Avatar src={faker.image.avatar()}
                     />}
                 />

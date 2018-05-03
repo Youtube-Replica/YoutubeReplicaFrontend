@@ -1,19 +1,17 @@
-import Link from 'next/link'
-import Head from 'next/head'
 import Wrapper from '../components/Wrapper';
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import VideoGrid from '../components/VideoGrid'
-import { Divider } from 'material-ui';
+import Grid from 'material-ui/Grid';
+import RaisedButton from 'material-ui/RaisedButton';
+import placeholder from '../assets/placeholder.jpg'
 import '../style.css'
 
 let faker = require('faker')
 
 
 class Channel extends Component {
-    constructor(props) {
-        super(props);
-    }
+
     componentWillMount = () => {
         this.setState({
             chosenTab: 'Videos'
@@ -30,8 +28,10 @@ class Channel extends Component {
 
     render() {
         return (
-            <Wrapper>
-                <ChannelHeader {...this.props}></ChannelHeader>
+
+            <div>
+                <ChannelHeader {...this.props} />
+
                 <div style={styles.tabsList}>
                     <div className={(this.state.chosenTab === 'Videos') ? 'red' : ''} onClick={this.handleClick} style={styles.tabs}>
                         Videos
@@ -41,7 +41,7 @@ class Channel extends Component {
                     </div>
                 </div>
                 <VideoGrid />
-            </Wrapper >
+            </div>
 
         )
     }
@@ -49,9 +49,6 @@ class Channel extends Component {
 
 
 class ChannelHeader extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     handleClick = (e) => {
         let subscribed = !this.state.subscribed;
@@ -65,28 +62,24 @@ class ChannelHeader extends Component {
     }
     render() {
         const subscribed = this.state.subscribed;
-        const button = subscribed ? (
-            <div style={styles.subBtnContainer}>
-                <button style={styles.subBtnWhite} onClick={this.handleClick}>  UNSUBSCRIBE</button>
-            </div>
+        let button = <RaisedButton label={"subscribe"} backgroundColor="red" labelColor="#ffffff" onClick={this.handleClick}
+            style={{ marginTop: 30, marginLeft: 1000, }} />
 
-        ) : (
-                <div style={styles.subBtnContainer}>
-                    <button style={styles.subBtn} onClick={this.handleClick}>  SUBSCRIBE</button>
-                </div>
-
-            )
+        if (subscribed) {
+            button = <RaisedButton label={"unsubscribe"} backgroundColor="white" onClick={this.handleClick}
+                style={{ marginTop: 30, marginLeft: 1000, }}
+            />
+        }
 
         return (
-            <div style={styles.header}>
-                <img style={styles.img} src={faker.image.image()} />
+            <div>
+                <img alt="profile" style={styles.img} src={placeholder} />
                 <div style={styles.channelName}>
-                    <h1>{this.props.url.query.title}</h1>
+                    <h1>{this.props.match.params.username}</h1>
                     <span>77,955 subscribers</span>
                 </div>
                 {button}
             </div>
-
         )
     }
 }
@@ -115,7 +108,6 @@ const styles = {
         flexDirection: 'row'
     },
     subBtn: {
-        background: 'red',
         width: '150px',
         height: '50px',
         borderRadius: '4px',
@@ -124,7 +116,6 @@ const styles = {
         cursor: 'pointer'
     },
     subBtnWhite: {
-        background: 'white',
         width: '150px',
         height: '50px',
         borderRadius: '4px',
@@ -132,12 +123,6 @@ const styles = {
         fontSize: '20px',
         cursor: 'pointer'
     },
-    header: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-start"
-    },
-
     header: {
         display: "flex",
         flexDirection: "row",

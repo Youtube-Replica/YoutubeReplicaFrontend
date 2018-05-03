@@ -1,20 +1,13 @@
-import { Component } from 'react';
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-import List from 'material-ui/List/List';
-import ListItem from 'material-ui/List/ListItem';
+import React, { Component } from 'react';
+import { Card, CardHeader } from 'material-ui/Card';
 import Avatar from 'material-ui/Avatar';
-
-import Link from 'next/link'
-import Head from 'next/head'
-import OptionsWrapper from '../components/OptionsWrapper';
 import { Divider } from 'material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
 
 // to generate fake data
 let faker = require('faker')
 
-export default class SettingsPage extends Component {
+export default class Settings extends Component {
     state = {
         shown: false
     }
@@ -44,7 +37,7 @@ export default class SettingsPage extends Component {
             }
         }
         return (
-            <OptionsWrapper>
+            <div>
                 <div className="settings-card">
                     <Card>
                         <CardHeader
@@ -94,7 +87,7 @@ export default class SettingsPage extends Component {
                         flex-wrap: no-wrap;
                     }
                 `}</style>
-            </OptionsWrapper >
+            </div >
 
         )
     }

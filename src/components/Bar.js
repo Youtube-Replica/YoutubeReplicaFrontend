@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
-import Router from 'next/router';
-
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
@@ -13,6 +11,8 @@ import ActionAccountCircle from 'material-ui/svg-icons/action/account-circle';
 import MenuItem from 'material-ui/MenuItem';
 import Menu from 'material-ui/Menu';
 import Popover from 'material-ui/Popover';
+
+import { Link } from 'react-router-dom'
 
 export default class Bar extends Component {
 
@@ -40,9 +40,6 @@ export default class Bar extends Component {
         });
     };
 
-    directToSettings = () => {
-        Router.push('/settings');
-    }
 
     render() {
 
@@ -53,7 +50,7 @@ export default class Bar extends Component {
 
                     <ToolbarGroup>
 
-                        <IconButton iconStyle={{ color: 'white' }} onClick={() => this.handleToggle()} >
+                        <IconButton iconStyle={{ color: 'white' }}>
                             <NavigationMenu />
                         </IconButton>
 
@@ -64,7 +61,7 @@ export default class Bar extends Component {
                     {/* Search field */}
                     <ToolbarGroup style={{ alignItems: 'center', justifyContent: 'center', paddingLeft: 190 }}>
 
-                        <TextField id="search" style={{ color: 'white' }} hintText="Search" />
+                        <TextField id="search" style={{ color: 'white' }} hintText="Search" inputStyle={{ color: 'white' }} />
                         <IconButton iconStyle={{ color: 'white' }}>
                             <ActionSearch />
                         </IconButton>
@@ -83,8 +80,8 @@ export default class Bar extends Component {
                             <SocialNotifications />
                         </IconButton>
 
-                        <IconButton iconStyle={{ color: 'white' }}>
-                            <ActionAccountCircle onClick={this.handleClick} />
+                        <IconButton iconStyle={{ color: 'white' }} onClick={(e) => this.handleClick(e)}>
+                            <ActionAccountCircle />
                             <Popover
                                 open={this.state.open}
                                 anchorEl={this.state.anchorEl}
@@ -94,7 +91,10 @@ export default class Bar extends Component {
                             >
                                 <Menu>
                                     <MenuItem primaryText="My Channel" />
-                                    <MenuItem primaryText="Settings" onClick={this.directToSettings} />
+
+                                    <MenuItem primaryText="Settings"
+                                        containerElement={<Link to="/settings" />} />
+
                                     <MenuItem primaryText="Sign out" />
                                 </Menu>
                             </Popover>
