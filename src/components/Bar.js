@@ -61,7 +61,7 @@ export default class Bar extends Component {
                     {/* Search field */}
                     <ToolbarGroup style={{ alignItems: 'center', justifyContent: 'center', paddingLeft: 190 }}>
 
-                        <TextField id="search" style={{ color: 'white' }} hintText="Search" />
+                        <TextField id="search" style={{ color: 'white' }} hintText="Search" inputStyle={{ color: 'white' }} />
                         <IconButton iconStyle={{ color: 'white' }}>
                             <ActionSearch />
                         </IconButton>
@@ -80,8 +80,8 @@ export default class Bar extends Component {
                             <SocialNotifications />
                         </IconButton>
 
-                        <IconButton iconStyle={{ color: 'white' }}>
-                            <ActionAccountCircle onClick={this.handleClick} />
+                        <IconButton iconStyle={{ color: 'white' }} onClick={(e) => this.handleClick(e)}>
+                            <ActionAccountCircle />
                             <Popover
                                 open={this.state.open}
                                 anchorEl={this.state.anchorEl}

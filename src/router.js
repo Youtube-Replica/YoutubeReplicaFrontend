@@ -18,7 +18,7 @@ export default class AppRouter extends Component {
                     <SideMenu />
 
                     <Route exact path="/" component={Home} />
-                    <Route path="/channel" component={Channel} />
+                    <Route path="/channel/:username" component={Channel} />
                     <Route path="/settings" component={Settings} />
                 </div>
 
