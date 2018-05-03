@@ -6,6 +6,8 @@ import SideMenu from "./components/SideMenu";
 import Home from './pages/'
 import Settings from './pages/settings'
 import Channel from './pages/channel'
+import Login from './pages/login'
+import Signup from './pages/signup'
 
 export default class AppRouter extends Component {
     render() {
@@ -18,6 +20,8 @@ export default class AppRouter extends Component {
                     <SideMenu />
 
                     <Route exact path="/" component={Home} />
+                    <Route path="/login" component={Login} />
+                    <Route path="/signup" component={Signup} />
                     <Route path="/channel/:username" component={Channel} />
                     <Route path="/settings" component={Settings} />
                 </div>
