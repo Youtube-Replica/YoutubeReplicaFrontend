@@ -12,7 +12,7 @@ import MenuItem from 'material-ui/MenuItem';
 import Menu from 'material-ui/Menu';
 import Popover from 'material-ui/Popover';
 
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 export default class Bar extends Component {
 
@@ -21,6 +21,8 @@ export default class Bar extends Component {
 
         this.state = {
             open: false,
+            searchTerm: '',
+            redirect: false,
         };
     }
 
@@ -40,8 +42,22 @@ export default class Bar extends Component {
         });
     };
 
+    search = () => {
+        let term = this.state.searchTerm
 
+        if (term && term !== '') {
+            this.setState({ redirect: true })
+        }
+    }
+
+    updateTerm = (event, value) => {
+        this.setState({ searchTerm: value.trim() })
+    }
     render() {
+
+        if (this.state.redirect) {
+            return <Redirect to={"/search/" + this.state.searchTerm} />
+        }
 
         return (
             <div>
@@ -54,15 +70,19 @@ export default class Bar extends Component {
                             <NavigationMenu />
                         </IconButton>
 
-                        <ToolbarTitle text="YouTube" style={{ color: 'white', fontSize: 25, paddingLeft: 15 }} />
+                        <Link to="/" style={{ textDecoration: 'none' }}>
+                            <ToolbarTitle text="YouTube" style={{ color: 'white', fontSize: 25, paddingLeft: 15 }} />
+                        </Link>
+
                     </ToolbarGroup>
 
 
                     {/* Search field */}
                     <ToolbarGroup style={{ alignItems: 'center', justifyContent: 'center', paddingLeft: 190 }}>
 
-                        <TextField id="search" style={{ color: 'white' }} hintText="Search" inputStyle={{ color: 'white' }} />
-                        <IconButton iconStyle={{ color: 'white' }}>
+                        <TextField id="search" style={{ color: 'white' }} hintText="Search"
+                            inputStyle={{ color: 'white' }} onChange={(e, v) => this.updateTerm(e, v)} />
+                        <IconButton iconStyle={{ color: 'white' }} onClick={() => this.search()}>
                             <ActionSearch />
                         </IconButton>
 

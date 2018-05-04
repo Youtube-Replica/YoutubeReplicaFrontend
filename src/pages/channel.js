@@ -2,8 +2,7 @@ import Wrapper from '../components/Wrapper';
 
 import React, { Component } from 'react';
 import VideoGrid from '../components/VideoGrid'
-import Grid from 'material-ui/Grid';
-import RaisedButton from 'material-ui/RaisedButton';
+import RaisedButton from 'material-ui/RaisedButton'
 import placeholder from '../assets/placeholder.jpg'
 import '../style.css'
 
