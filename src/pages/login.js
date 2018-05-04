@@ -11,21 +11,38 @@ export default class Login extends Component {
 
     render() {
         return (
-            <Paper zDepth={2}>
+            <Paper zDepth={1} style={styles.root}>
 
-                <TextField
+                <h1>Login</h1>
+
+                <TextField style={styles.item}
                     floatingLabelText="Enter your email"
                 />
 
+                <br /><br />
 
-                <TextField
+                <TextField style={styles.item}
                     floatingLabelText="Enter your password"
                     type="password"
                 />
 
-                <RaisedButton label="Sign In" primary={true} />
+                <br /><br />
+
+                <RaisedButton label="Login" backgroundColor='#2979FF' labelColor='#ffffff' style={styles.item} />
 
             </Paper>
         )
     }
 };
+
+const styles = {
+    root: {
+        margin: '0 auto',
+        marginTop: 50,
+        width: '50%',
+        padding: 60,
+    },
+    item: {
+        margin: '40 40 40 40',
+    }
+}
