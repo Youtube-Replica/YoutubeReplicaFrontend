@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
+import { Link } from 'react-router-dom'
 
 export default class Login extends Component {
 
@@ -13,7 +14,7 @@ export default class Login extends Component {
         return (
             <Paper zDepth={1} style={styles.root}>
 
-                <h1>Login</h1>
+                <h1 style={{ fontWeight: 100 }}>Login</h1>
 
                 <TextField style={styles.item}
                     floatingLabelText="Enter your email"
@@ -29,6 +30,12 @@ export default class Login extends Component {
                 <br /><br />
 
                 <RaisedButton label="Login" backgroundColor='#2979FF' labelColor='#ffffff' style={styles.item} />
+
+                <br /><br /><br />
+
+                <p style={{ fontWeight: 100 }}>Don't have an account?
+                    <Link to="/signup">Sign up</Link>
+                </p>
 
             </Paper>
         )
