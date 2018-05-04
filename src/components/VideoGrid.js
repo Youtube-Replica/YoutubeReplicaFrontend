@@ -26,7 +26,7 @@ export default class VideoGrid extends Component {
         return (
             <div>
 
-                <GridList style={styles.root} cols={this.props.cols} padding={20}>
+                <GridList style={styles.root} cols={this.props.cols > 0 ? this.props.cols : 5} padding={20}>
                     {videos}
                 </GridList>
 
